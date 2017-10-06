@@ -1,0 +1,46 @@
+<%= form_with(model: company, local: true) do |form| %>
+  <% if company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="container">
+    <div class="form-group">
+    <%= form.label "Name" %>
+    <%= form.text_field :name %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label "Homepage" %>
+    <%= form.text_field :url %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label :city_id %>
+    <%= form.collection_select(:city_id, City.all, :id, :name, prompt: true) %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label :category_id %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+  </div>
+
+    <div class="form-group">
+    <%= form.label "Status" %>
+    <%= form.collection_select(:listing_status_id, ListingStatus.all, :id, :status, {selected: "Submitted"}) %>
+  </div>
+
+    <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+
+  </div>
+
+<% end %>

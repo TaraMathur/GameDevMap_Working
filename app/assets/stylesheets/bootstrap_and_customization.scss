@@ -1,0 +1,38 @@
+$body-bg:                          #ecf0f1;
+$font-family-sans-serif:           'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$navbar-height:                    45px;
+$navbar-default-bg:                #212727;
+$navbar-default-brand-color:       #3CAFF2;
+$brand-primary:                    #c0392b;
+$jumbotron-bg:                     white;
+
+@import 'bootstrap';
+
+.nav.navbar-nav.navbar-right li a {
+    color: #3CAFF2;
+}
+
+.center {
+	text-align: center;
+}
+
+.navbar-brand {
+     font-weight: bold;
+}
+
+.table {
+	margin-top: 30px;
+	margin-left: 50px;
+	margin-right:50px;
+	padding: 50px;
+	width: auto;
+}
+
+.footer2 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
