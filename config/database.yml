@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+#  <<: *default
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: postgresql
+  database: <gamedevmap_production>
+  username: <gamedevmap_example>
+  password: <%= ENV['GAMEDEVMAP_DATABASE_PASSWORD'] %>
+
