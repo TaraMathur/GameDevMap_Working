@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :companies
 
-  get 'static_pages/about'
-  get 'static_pages/legal'
-  get 'static_pages/help'
-  get 'static_pages/sponsor'
+  get '/about', to: 'static_pages#about'
+  get '/legal', to: 'static_pages#legal'
+  get '/help', to: 'static_pages#help'
+  get '/sponsor', to: 'static_pages#sponsor'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
