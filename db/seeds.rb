@@ -669,7 +669,6 @@ tara = Company.create(name:"Test",url:"www.google.com",city_id:SanFrancisco.id, 
 tara2 = Company.create(name:"Test2",url:"www.google.com",city_id:Boston.id, category_id: cat1.id, listing_status_id: status1.id)
 #Company.create(name:"Test2",url:"www.google.com",city_id:Mumbai.id)
 apps = Company.create(name:"82 Apps",url:"www.82apps.com",city_id:Boston.id)
-byebug
 Company.create(name:"Akili Interactive",url:"www.akiliinteractive.com",city_id:Boston.id)
 Company.create(name:"Astro Assembly",url:"www.astroassembly.com",city_id:Boston.id)
 Company.create(name:"Boston Indies",url:"www.bostonindies.com",city_id:Boston.id)
