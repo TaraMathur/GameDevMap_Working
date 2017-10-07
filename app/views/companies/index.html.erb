@@ -133,20 +133,17 @@ var map = AmCharts.makeChart( "mapdiv", {
     </div> <!-- col-lg-3 -->
   </div> <!-- search-bar -->
 
+<br>
   <div id="filters">
       <%= form_tag(companies_path, method: 'get', id: "filters") do %>
-        <%= select_tag :category_id, content_tag(:option,'All Categories',:value=>"",)+options_from_collection_for_select(Category.all, :id, :name) %>
+        <%= select_tag :category_id, content_tag(:option,'All Categories',:value=>"")+options_from_collection_for_select(Category.all, :id, :name) %>
         <%= select_tag :country_id, content_tag(:option,'All Countries',:value=>"")+options_from_collection_for_select(Country.all, :id, :name) %>
         <%= select_tag :state_prov_id, content_tag(:option,'All States/Provs',:value=>"")+options_from_collection_for_select(StateProv.all, :id, :name) %>
         <%= select_tag :city_id, content_tag(:option,'All Cities',:value=>"")+options_from_collection_for_select(City.all, :id, :name) %>
         <%= submit_tag "Clear", class: 'btn btn-default', value: "clear" %>
       <% end %>
   </div> <!-- filters -->
-
-</div> <!-- searching -->
-
-<br>
-<br>
+</div>
 
 <% if false %>
   <%= form_tag companies_path, method: "get", id: "filter", class: "filter" do %>
