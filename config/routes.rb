@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/sponsor', to: 'static_pages#sponsor'
 
+  get 'companies/update_stateprovs'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 	resources :countries , only: [:new, :create, :index]

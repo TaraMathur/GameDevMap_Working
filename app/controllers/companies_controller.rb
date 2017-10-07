@@ -48,7 +48,9 @@ class CompaniesController < ApplicationController
 	@company = Company.find(params[:id])
 end
 
- def update_cities
+ def update_stateprovs
+ 	byebug
+ 	@stateprovs = StateProv.where("country.name LIKE ?", "Argentina")
  end
 end
 

@@ -137,10 +137,10 @@ var map = AmCharts.makeChart( "mapdiv", {
   <div id="filters">
       <%= form_tag(companies_path, method: 'get', id: "filters") do %>
         <%= select_tag :category_id, content_tag(:option,'All Categories',:value=>"")+options_from_collection_for_select(Category.all, :id, :name) %>
-        <%= select_tag :country_id, content_tag(:option,'All Countries',:value=>"")+options_from_collection_for_select(Country.all, :id, :name) %>
+        <%= select_tag :country_id, content_tag(:option,'All Countries',:value=>"")+options_from_collection_for_select(Country.all, :id, :name), onchange: "change_states(this)" %>
         <%= select_tag :state_prov_id, content_tag(:option,'All States/Provs',:value=>"")+options_from_collection_for_select(StateProv.all, :id, :name) %>
         <%= select_tag :city_id, content_tag(:option,'All Cities',:value=>"")+options_from_collection_for_select(City.all, :id, :name) %>
-        <%= submit_tag "Reset", class: 'btn btn-default', value: "reset" %>
+        <%= submit_tag "Reset", class: 'btn btn-default', value: "Reset" %>
       <% end %>
   </div> <!-- filters -->
 </div>
@@ -148,12 +148,12 @@ var map = AmCharts.makeChart( "mapdiv", {
 <% if false %>
   <%= form_tag companies_path, method: "get", id: "filter", class: "filter" do %>
     <%= label_tag "Category" %>
-    <%= select "company", "countr", options_for_select([["United States","United States"],["United Kingdom","United Kingdom"]]), {prompt: 'All'}, onchange: "$('#filter').submit();" %>
+    <%= select "company", "country", options_for_select([["United States","United States"],["United Kingdom","United Kingdom"]]), {prompt: 'All'}, onchange: "$('#filter').submit();" %>
   <% end %>
 <% end %>
 
 <% if @companies.blank? %>
-  <h5>No companies. <%= params[:search] %>.</h5>
+  <h5>     No companies. <%= params[:search] %>.</h5>
 <% else %>
   <h5><%= @companies.size %> companies.</h5>
 <% end %>
