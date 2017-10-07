@@ -1,17 +1,17 @@
 class CompaniesController < ApplicationController
 
 	def index
-		#@mappoints = MapPoint.all
+		@mappoints = MapPoint.all
 		@latLong = {}
 		@mapDatum = []
 		i = 0
 
 		# Needed for amMap ----------
-		#@mappoints.each do |element|
-		#	@latLong[element.name] = {"latitude": element.latitude, "longitude": element.longitude}
-		#	@mapDatum[i] = {"code": element.name , "name": element.name, "value":32358260, "color":"#e74c3c"}
-		#	i = i + 1
-		#end
+		@mappoints.each do |element|
+			@latLong[element.name] = {"latitude": element.latitude, "longitude": element.longitude}
+			@mapDatum[i] = {"code": element.name , "name": element.name, "value":32358260, "color":"#e74c3c"}
+			i = i + 1
+		end
 		# ----
 
 		if (params[:search] && params[:commit]!="clear")
