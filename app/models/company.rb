@@ -43,14 +43,14 @@ def self.search(search)
 	result = byCompanyName + byCityName
 
 	# Search by StateProv
-	cities = 	City.joins(:state_prov).where("state_provs.name LIKE ?", "#{search}%").pluck(:id)
+	cities = 	City.joins(:state_prov).where("state_provs.name LIKE ?", "%#{search}%").pluck(:id)
 	comps = Company.where(city_id: cities)
 	if comps
 		result = result + comps
 	end
 
 	# Search by Country
-	states = 	StateProv.joins(:country).where("countries.name LIKE ?", "#{search}%").pluck(:id)
+	states = 	StateProv.joins(:country).where("countries.name LIKE ?", "%#{search}%").pluck(:id)
 	cities = City.where(state_prov_id: states).pluck(:id)
 	comps = where(city_id: cities)
 	if comps

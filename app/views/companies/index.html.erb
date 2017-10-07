@@ -138,7 +138,7 @@ var map = AmCharts.makeChart( "mapdiv", {
       <%= form_tag(companies_path, method: 'get', id: "filters") do %>
         <%= select_tag :category_id, content_tag(:option,'All Categories',:value=>"")+options_from_collection_for_select(Category.all, :id, :name) %>
         <%= select_tag :country_id, content_tag(:option,'All Countries',:value=>"")+options_from_collection_for_select(Country.all, :id, :name), onchange: "change_states(this)" %>
-        <%= select_tag :state_prov_id, content_tag(:option,'All States/Provs',:value=>"")+options_from_collection_for_select(StateProv.all, :id, :name) %>
+        <%= select_tag :state_prov_id, content_tag(:option,'All States/Provinces',:value=>"")+options_from_collection_for_select(StateProv.all, :id, :name) %>
         <%= select_tag :city_id, content_tag(:option,'All Cities',:value=>"")+options_from_collection_for_select(City.all, :id, :name) %>
         <%= submit_tag "Reset", class: 'btn btn-default', value: "Reset" %>
       <% end %>
@@ -153,7 +153,7 @@ var map = AmCharts.makeChart( "mapdiv", {
 <% end %>
 
 <% if @companies.blank? %>
-  <h5>     No companies. <%= params[:search] %>.</h5>
+  <h5> No companies matching <%= params[:search] %>.</h5>
 <% else %>
   <h5><%= @companies.size %> companies.</h5>
 <% end %>
@@ -163,7 +163,7 @@ var map = AmCharts.makeChart( "mapdiv", {
 		<th>Company</th>
 		<th>Category</th>
 		<th>City</th>
-		<th>State/Prov</th>
+		<th>State/Province</th>
 		<th>Country</th>
 	</tr>
 

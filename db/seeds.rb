@@ -1,9 +1,10 @@
 Company.delete_all
- Category.delete_all
- Country.delete_all
- StateProv.delete_all
- MapPoint.delete_all
-
+Category.delete_all
+Country.delete_all
+StateProv.delete_all
+MapPoint.delete_all
+City.delete_all
+ListingStatus.delete_all
 
 # Load categories
 cat1 = Category.create(name: "Developer")
