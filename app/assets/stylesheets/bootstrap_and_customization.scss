@@ -8,6 +8,11 @@ $jumbotron-bg:                     white;
 
 @import 'bootstrap';
 
+body {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
 .nav.navbar-nav.navbar-right li a {
     color: #3CAFF2;
 }
