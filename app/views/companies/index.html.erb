@@ -140,7 +140,7 @@ var map = AmCharts.makeChart( "mapdiv", {
         <%= select_tag :country_id, content_tag(:option,'All Countries',:value=>"")+options_from_collection_for_select(Country.all, :id, :name) %>
         <%= select_tag :state_prov_id, content_tag(:option,'All States/Provs',:value=>"")+options_from_collection_for_select(StateProv.all, :id, :name) %>
         <%= select_tag :city_id, content_tag(:option,'All Cities',:value=>"")+options_from_collection_for_select(City.all, :id, :name) %>
-        <%= submit_tag "Clear", class: 'btn btn-default', value: "clear" %>
+        <%= submit_tag "Reset", class: 'btn btn-default', value: "reset" %>
       <% end %>
   </div> <!-- filters -->
 </div>
