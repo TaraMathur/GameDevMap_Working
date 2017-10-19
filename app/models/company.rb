@@ -1,4 +1,7 @@
 class Company < ApplicationRecord	
+	validates :name, presence: true
+	validates :url, presence: true
+
 #	belongs_to :listing_status
 	belongs_to :category
 	belongs_to :city
@@ -35,6 +38,8 @@ end
 # Move into a scope?
 def self.search(search)
 
+	byebug
+
 	# Search by Company Name
  	byCompanyName = where("name LIKE ?", "%#{search}%")
 
@@ -44,7 +49,7 @@ def self.search(search)
 
 	# Search by StateProv
 	cities = 	City.joins(:state_prov).where("state_provs.name LIKE ?", "%#{search}%").pluck(:id)
-	comps = Company.where(city_id: cities)
+	comps = where(city_id: cities)
 	if comps
 		result = result + comps
 	end
@@ -59,6 +64,17 @@ def self.search(search)
 
    	return result
 
+ end
+
+ def self.mappoint_search(search)
+ 	byebug
+ 	mappoints = MapPoint.where("name LIKE ?", "%#{search}%").pluck(:id)
+ 	cities = City.where(map_point_id: mappoints)
+ 	city_ids = cities.pluck(:id)
+ 	comps = where(city_id: city_ids)
+
+ 	byebug
+ 	return comps
  end
 
 end

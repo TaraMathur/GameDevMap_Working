@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :companies
-
+  resources :companies do
+    collection do
+      get :filter_on_map
+    end
+  end
+  
+  get '/companies/:name', to: 'companies#index', as: 'test'
   get '/about', to: 'static_pages#about'
   get '/legal', to: 'static_pages#legal'
   get '/help', to: 'static_pages#help'
@@ -12,7 +17,7 @@ Rails.application.routes.draw do
 
 	resources :countries , only: [:new, :create, :index]
 
-#	root 'static_pages#mygraph'
+
 	root 'companies#index'
 
 end

@@ -1,0 +1,21 @@
+<div id=company-table>
+<table class="table table-bordered table-striped table-condensed">
+	<tr>
+		<th>Company</th>
+		<th>Type</th>
+		<th>City</th>
+		<th>State/Province</th>
+		<th>Country</th>
+	</tr>
+
+	<% @companies.each do |company| %>
+	<tr>
+		<td><%=link_to company.name, "http://" + company.url %></td>
+    <td><%= Category.find_by(id: company.category_id).name %></td>
+		<td><%= company.get_city_name %></td>
+		<td><%= company.get_stateprov_name %></td>
+		<td><%= company.get_country_name %></td>
+	</tr>
+	<% end %>
+</table>
+</div>

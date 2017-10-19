@@ -5,3 +5,7 @@ function change_states(select_tag){
     data: {data1: value1}
   })
  }
+
+function refresh_table(){
+	$("#company-table").html("<%= escape_javascript(render partial: 'companies/company_table', data: @companies) %>");
+}

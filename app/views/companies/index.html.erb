@@ -99,21 +99,22 @@ var map = AmCharts.makeChart( "mapdiv", {
     "selectedColor": "#3CAFF2",
     "selectable": true
   }, 
-/*
-  "export": {
-    "enabled": true
-  }, */
   "listeners": [{
     "event": "clickMapObject",
     "method": function(event) {
-    //  alert(event.mapObject.title);
-      var cityName = event.mapObject.title;
+      clickedCity = event.mapObject.title;
+      alert(clickedCity);
+      $.get("/companies/filter_on_map",{clickedCity, clickedCity});
     }
   }]
 } );
 </script>
-
-<!-- HTML -->
+      
+<!-- HTML  
+      $("#company-table").html("<%= escape_javascript(render partial: 'companies/company_table', data: @companies) %>");
+      $("#company-table").replaceWith('<% render partial: "companies/company_table" %>')
+     
+      -->
 
 <div id="mapdiv" style="width: 100%; height: 400px;"></div>
 <br>
@@ -136,7 +137,7 @@ var map = AmCharts.makeChart( "mapdiv", {
 <br>
   <div id="filters">
       <%= form_tag(companies_path, method: 'get', id: "filters") do %>
-        <%= select_tag :category_id, content_tag(:option,'All Categories',:value=>"")+options_from_collection_for_select(Category.all, :id, :name) %>
+        <%= select_tag :category_id, content_tag(:option,'All Company Types',:value=>"")+options_from_collection_for_select(Category.all, :id, :name) %>
         <%= select_tag :country_id, content_tag(:option,'All Countries',:value=>"")+options_from_collection_for_select(Country.all, :id, :name), onchange: "change_states(this)" %>
         <%= select_tag :state_prov_id, content_tag(:option,'All States/Provinces',:value=>"")+options_from_collection_for_select(StateProv.all, :id, :name) %>
         <%= select_tag :city_id, content_tag(:option,'All Cities',:value=>"")+options_from_collection_for_select(City.all, :id, :name) %>
@@ -158,22 +159,6 @@ var map = AmCharts.makeChart( "mapdiv", {
   <h5><%= @companies.size %> companies.</h5>
 <% end %>
 
-<table class="table table-bordered table-striped table-condensed">
-	<tr>
-		<th>Company</th>
-		<th>Category</th>
-		<th>City</th>
-		<th>State/Province</th>
-		<th>Country</th>
-	</tr>
-
-	<% @companies.each do |company| %>
-	<tr>
-		<td><%=link_to company.name, "http://" + company.url %></td>
-    <td><%= Category.find_by(id: company.category_id).name %></td>
-		<td><%= company.get_city_name %></td>
-		<td><%= company.get_stateprov_name %></td>
-		<td><%= company.get_country_name %></td>
-	</tr>
-	<% end %>
-</table>
+<div id = comp-table>
+<%=render 'companies/company_table' %>
+</div>
