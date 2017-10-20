@@ -30,6 +30,7 @@ class CompaniesController < ApplicationController
 		# Map Click
 		if (params["clickedMapPoint"])
 			@companies = Company.filter_search("clickedMapPoint",params["clickedMapPoint"])
+			byebug
 		elsif (params["comp_type"] && params["comp_type"]!= "")
 			@companies = Company.filter_search("comp_type",params["comp_type"])
 		elsif (params["countrySelected"] && params["countrySelected"]!= "")
@@ -59,10 +60,9 @@ class CompaniesController < ApplicationController
 end
 
 def filter_on_map
-
 	# Searching via Map
 	if (params["clickedMapPoint"])
-		@companies = Company.mappoint_search(params["clickedMapPoint"])
+		@companies = Company.filter_search("clickedMapPoint",params["clickedMapPoint"])
 	else
 		@companies = Company.all
 	end

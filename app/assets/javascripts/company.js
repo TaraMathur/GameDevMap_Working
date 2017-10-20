@@ -21,4 +21,3 @@ function filter_on_type(select_tag){
     data: {comp_type: comp_type}
   })
  }
-
