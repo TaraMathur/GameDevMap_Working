@@ -35,10 +35,7 @@ def get_country_name
 	return country.name
 end
 
-# Move into a scope?
 def self.search(search)
-
-	byebug
 
 	# Search by Company Name
  	byCompanyName = where("name LIKE ?", "%#{search}%")
@@ -99,7 +96,6 @@ def self.search(search)
 
  def self.find_stateprovs(country_id)
  	states = StateProv.where(country_id: country_id)
- 	byebug
  	return states
  	end
 end
