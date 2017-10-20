@@ -74,7 +74,7 @@ def filter_on_selects
 end
 
  def filter_on_country_select
- 	if (params["countrySelected"])
+ 	if (params["countrySelected"] && params["countrySelected"]!= "")
  		@companies = Company.find_comps_in_country(params["countrySelected"])
  	else
  		@companies = Company.all
