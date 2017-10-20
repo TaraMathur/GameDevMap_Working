@@ -67,13 +67,11 @@ def self.search(search)
  end
 
  def self.mappoint_search(search)
- 	byebug
  	mappoints = MapPoint.where("name LIKE ?", "%#{search}%").pluck(:id)
  	cities = City.where(map_point_id: mappoints)
  	city_ids = cities.pluck(:id)
  	comps = where(city_id: city_ids)
 
- 	byebug
  	return comps
  end
 

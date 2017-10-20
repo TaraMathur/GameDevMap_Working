@@ -20,9 +20,8 @@ class CompaniesController < ApplicationController
 			@companies = Company.search(params[:search])
 			#.order("created_at DESC")
 		# Map Click
-		elsif (params["clickedCity"])
-			@companies = Company.search(params["clickedCity"])
-			byebug
+		elsif (params["clickedMapPoint"])
+			@companies = Company.search(params["clickedMapPoint"])
 		else
 			@companies = Company.all
 		end
@@ -63,14 +62,11 @@ end
 def filter_on_map
 
 	# Searching via Map
-	if (params["clickedCity"])
-		@companies = Company.mappoint_search(params["clickedCity"])
-		byebug
+	if (params["clickedMapPoint"])
+		@companies = Company.mappoint_search(params["clickedMapPoint"])
 	else
 		@companies = Company.all
 	end
-
-	render partial: "/companies/company_table"
 end
 
   private

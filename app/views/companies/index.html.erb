@@ -102,19 +102,15 @@ var map = AmCharts.makeChart( "mapdiv", {
   "listeners": [{
     "event": "clickMapObject",
     "method": function(event) {
-      clickedCity = event.mapObject.title;
-      alert(clickedCity);
-      $.get("/companies/filter_on_map",{clickedCity, clickedCity});
+      clickedMapPoint = event.mapObject.title;
+      $.get("/companies/filter_on_map",{clickedMapPoint, clickedMapPoint});
     }
   }]
 } );
 </script>
       
-<!-- HTML  
-      $("#company-table").html("<%= escape_javascript(render partial: 'companies/company_table', data: @companies) %>");
-      $("#company-table").replaceWith('<% render partial: "companies/company_table" %>')
-     
-      -->
+<!-- HTML        
+ -->
 
 <div id="mapdiv" style="width: 100%; height: 400px;"></div>
 <br>
