@@ -69,6 +69,15 @@ def filter_on_map
 	end
 end
 
+def filter_on_selects
+	if (params["comp_type"])
+		@companies = Company.comptype_search(params["comp_type"])
+	else
+		@companies = Company.all
+	end
+
+end
+
   private
 
 def set_company

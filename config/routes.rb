@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   resources :companies do
     collection do
       get :filter_on_map
+      get :filter_on_selects
     end
   end
-  
+
   get '/companies/:name', to: 'companies#index', as: 'test'
   get '/about', to: 'static_pages#about'
   get '/legal', to: 'static_pages#legal'

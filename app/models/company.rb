@@ -75,4 +75,11 @@ def self.search(search)
  	return comps
  end
 
+ def self.comptype_search(search)
+ 	comptype_ids = Category.where(id: search)
+ 	comps = where(category_id: comptype_ids)
+
+ 	return comps
+ end
+
 end
