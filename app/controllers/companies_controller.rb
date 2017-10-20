@@ -65,7 +65,7 @@ def filter_on_map
 end
 
 def filter_on_selects
-	if (params["comp_type"])
+	if (params["comp_type"] && params["comp_type"]!= "")
 		@companies = Company.comptype_search(params["comp_type"])
 	else
 		@companies = Company.all
