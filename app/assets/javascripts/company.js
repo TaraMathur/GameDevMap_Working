@@ -6,6 +6,14 @@ function change_states(select_tag){
   })
  }
 
+function filter_on_city(select_tag){
+  citySelected = $(select_tag).val()
+  $.ajax({
+    url: "companies/filter_on_city_select",
+    data: {citySelected: citySelected}
+  })
+ }
+
 function triggerSearch(select_tag){
   console.log("in triggerSearch")
   comp_type = $(select_tag).val()
@@ -15,8 +23,3 @@ function triggerSearch(select_tag){
   })
  }
 
-function register_filters(){
- $('select#preferences').change( function() {
-    $.get('preferences/tag_with',{term: $('option:selected',this).val()});
-  });
-}

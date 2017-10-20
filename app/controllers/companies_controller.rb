@@ -74,6 +74,7 @@ def filter_on_selects
 end
 
  def filter_on_country_select
+ 	# check if city or state is selected, if yes then call another find method
  	if (params["countrySelected"] && params["countrySelected"]!= "")
  		@companies = Company.find_comps_in_country(params["countrySelected"])
  	else
@@ -83,6 +84,16 @@ end
 # 		@stateprovs = Company.find_stateprovs(params["countrySelected"])
  end
 
+ def filter_on_city_select
+ 	# check if city or state is selected, if yes then call another find method
+ 	if (params["citySelected"] && params["citySelected"]!= "")
+ 		@companies = Company.find_comps_in_city(params["citySelected"])
+ 	else
+ 		@companies = Company.all
+ 	end
+
+# 		@stateprovs = Company.find_stateprovs(params["countrySelected"])
+ end
 
   private
 
