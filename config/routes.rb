@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       get :filter_on_selects
       get :filter_on_country_select
       get :filter_on_city_select
-      get :search
+      get :filter
     end
   end
 

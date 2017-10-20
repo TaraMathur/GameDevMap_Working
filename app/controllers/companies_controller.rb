@@ -17,7 +17,7 @@ class CompaniesController < ApplicationController
 
 		# Search bar search
 		if (params[:search] && params[:commit]!="clear")
-			@companies = Company.search(params[:search])
+			@companies = Company.column_search(params[:search])
 			#.order("created_at DESC")
 		else
 			@companies = Company.all
@@ -26,7 +26,7 @@ class CompaniesController < ApplicationController
 		@cities = City.all
 	end
 
-	def search
+	def filter
 		# Map Click
 		if (params["clickedMapPoint"])
 			@companies = Company.filter_search("clickedMapPoint",params["clickedMapPoint"])

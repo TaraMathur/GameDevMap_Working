@@ -35,7 +35,7 @@ def get_country_name
 	return country.name
 end
 
-def self.search(search)
+def self.column_search(search)
 
 	# Search by Company Name
  	byCompanyName = where("name LIKE ?", "%#{search}%")
