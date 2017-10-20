@@ -75,10 +75,12 @@ end
 
  def filter_on_country_select
  	if (params["countrySelected"])
- 		@stateprovs = Company.find_stateprovs(params["countrySelected"])
+ 		@companies = Company.find_comps_in_country(params["countrySelected"])
  	else
- 		@stateprovs = StateProv.all
+ 		@companies = Company.all
  	end
+
+# 		@stateprovs = Company.find_stateprovs(params["countrySelected"])
  end
 
 

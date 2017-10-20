@@ -82,6 +82,15 @@ def self.search(search)
  	return comps
  end
 
+ def self.find_comps_in_country(country_id)
+	# Search by Country
+	states = StateProv.joins(:country).where(country_id: country_id)
+	cities = City.where(state_prov_id: states).pluck(:id)
+	comps = where(city_id: cities)
+
+	return comps
+ 	end
+
  def self.find_stateprovs(country_id)
  	states = StateProv.where(country_id: country_id)
  	byebug
