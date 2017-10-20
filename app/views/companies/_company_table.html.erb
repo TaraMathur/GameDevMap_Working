@@ -2,8 +2,10 @@
 
 <% if @companies.blank? %>
   <h5> No companies matching <%= params[:search] %>.</h5>
+<% elsif @companies.size == 1 %>
+  <h5><%= @companies.size %> company:</h5>
 <% else %>
-  <h5><%= @companies.size %> companies.</h5>
+  <h5><%= @companies.size %> companies:</h5>
 <% end %>
 
 <table class="table table-bordered table-striped table-condensed">
