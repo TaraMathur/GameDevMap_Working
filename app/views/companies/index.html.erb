@@ -109,8 +109,7 @@ var map = AmCharts.makeChart( "mapdiv", {
 } );
 </script>
       
-<!-- HTML        
- -->
+<!-- HTML   -->
 
 <div id="mapdiv" style="width: 100%; height: 400px;"></div>
 <br>
@@ -149,12 +148,5 @@ var map = AmCharts.makeChart( "mapdiv", {
   <% end %>
 <% end %>
 
-<% if @companies.blank? %>
-  <h5> No companies matching <%= params[:search] %>.</h5>
-<% else %>
-  <h5><%= @companies.size %> companies.</h5>
-<% end %>
 
-<div id = comp-table>
 <%=render 'companies/company_table' %>
-</div>
