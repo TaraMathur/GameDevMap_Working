@@ -6,11 +6,9 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "About",  about_path %>
         <li><%= link_to "Sponsor", sponsor_path %>
-        <li><%=link_to new_company_path do %>
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Submit
-        <% end %>
+        <li><%=link_to "Submit Changes", new_company_path %>
         <li><%= link_to "Legal", legal_path %>
-        <li><%= mail_to "contact@gamedevmpa.com","Contact" %>
+        <li><%= mail_to "contact@gamedevmap.com","Contact" %>
         <li><%= link_to "Twitter", "https://twitter.com/gamedevmap" %>
         <li><%= link_to "Facebook", "https://www.facebook.com/gamedevmap/" %>
       </ul>
