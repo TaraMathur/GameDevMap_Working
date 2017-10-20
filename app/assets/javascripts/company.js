@@ -1,4 +1,4 @@
-function change_states(select_tag){
+function filter_on_country(select_tag){
   countrySelected = $(select_tag).val()
   $.ajax({
     url: "companies/filter_on_country_select",
@@ -14,7 +14,7 @@ function filter_on_city(select_tag){
   })
  }
 
-function triggerSearch(select_tag){
+function filter_on_type(select_tag){
   console.log("in triggerSearch")
   comp_type = $(select_tag).val()
   $.ajax({
