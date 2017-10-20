@@ -19,20 +19,24 @@ class CompaniesController < ApplicationController
 		if (params[:search] && params[:commit]!="clear")
 			@companies = Company.search(params[:search])
 			#.order("created_at DESC")
-		# Map Click
-		elsif (params["clickedMapPoint"])
-			@companies = Company.search(params["clickedMapPoint"])
 		else
 			@companies = Company.all
 		end
 
-		# This isn't working yet
-		if (params[:category_id] && params[:commit]!="")
-			@companies = Company.all
-			#where(:category_id @companies.category_id)
-		end
-
 		@cities = City.all
+	end
+
+	def search
+		# Map Click
+		if (params["clickedMapPoint"])
+			@companies = Company.filter_search("clickedMapPoint",params["clickedMapPoint"])
+		elsif (params["comp_type"] && params["comp_type"]!= "")
+			@companies = Company.filter_search("comp_type",params["comp_type"])
+		elsif (params["countrySelected"] && params["countrySelected"]!= "")
+	 		@companies = Company.filter_search("countrySelected",params["countrySelected"])
+		else
+			@companies = Company.all
+		end
 	end
 
 	def new

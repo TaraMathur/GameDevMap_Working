@@ -63,30 +63,24 @@ def self.search(search)
 
  end
 
- def self.mappoint_search(search)
- 	mappoints = MapPoint.where("name LIKE ?", "%#{search}%").pluck(:id)
- 	cities = City.where(map_point_id: mappoints)
- 	city_ids = cities.pluck(:id)
- 	comps = where(city_id: city_ids)
-
- 	return comps
+ def self.filter_search(search_key, search_value)
+		if (search_key == "clickedMapPoint")
+			mappoints = MapPoint.where("name LIKE ?", "%#{search_value}%").pluck(:id)
+ 			cities = City.where(map_point_id: mappoints)
+ 			city_ids = cities.pluck(:id)
+ 			comps = where(city_id: city_ids)
+ 			return comps
+		elsif (search_key == "comp_type")
+			comptype_ids = Category.where(id: search_value)
+ 			comps = where(category_id: comptype_ids)
+ 			return comps
+		elsif (search_key == "countrySelected")
+			states = StateProv.joins(:country).where(country_id: search_value)
+			cities = City.where(state_prov_id: states).pluck(:id)
+			comps = where(city_id: cities)
+			return comps
+		end
  end
-
- def self.comptype_search(search)
- 	comptype_ids = Category.where(id: search)
- 	comps = where(category_id: comptype_ids)
-
- 	return comps
- end
-
- def self.find_comps_in_country(country_id)
-	# Search by Country
-	states = StateProv.joins(:country).where(country_id: country_id)
-	cities = City.where(state_prov_id: states).pluck(:id)
-	comps = where(city_id: cities)
-
-	return comps
- 	end
 
  def self.find_comps_in_city(city_id)
 	comps = where(city_id: city_id)
