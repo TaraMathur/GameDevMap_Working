@@ -54,11 +54,6 @@ class CompaniesController < ApplicationController
 	@company = Company.find(params[:id])
 end
 
- def update_stateprovs
- 	byebug
-# 	@stateprovs = StateProv.where("country.name LIKE ?", "Argentina")
- end
-
 def filter_on_map
 
 	# Searching via Map
@@ -77,6 +72,15 @@ def filter_on_selects
 	end
 
 end
+
+ def filter_on_country_select
+ 	if (params["countrySelected"])
+ 		@stateprovs = Company.find_stateprovs(params["countrySelected"])
+ 	else
+ 		@stateprovs = StateProv.all
+ 	end
+ end
+
 
   private
 

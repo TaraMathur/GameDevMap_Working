@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       get :filter_on_map
       get :filter_on_selects
+      get :filter_on_country_select
     end
   end
 
@@ -12,12 +13,9 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/sponsor', to: 'static_pages#sponsor'
 
-  get 'companies/update_stateprovs'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 	resources :countries , only: [:new, :create, :index]
-
 
 	root 'companies#index'
 

@@ -82,4 +82,9 @@ def self.search(search)
  	return comps
  end
 
+ def self.find_stateprovs(country_id)
+ 	states = StateProv.where(country_id: country_id)
+ 	byebug
+ 	return states
+ 	end
 end

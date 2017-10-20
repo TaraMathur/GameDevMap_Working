@@ -1,8 +1,9 @@
 function change_states(select_tag){
-  value1 = $(select_tag).val()
+  countrySelected = $(select_tag).val()
+  console.log(countrySelected)
   $.ajax({
-    url: "companies/update_stateprovs",
-    data: {data1: value1}
+    url: "companies/filter_on_country_select",
+    data: {countrySelected: countrySelected}
   })
  }
 
