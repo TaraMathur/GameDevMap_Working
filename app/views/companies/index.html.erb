@@ -113,10 +113,12 @@ var map = AmCharts.makeChart( "mapdiv", {
   <div id="search-bar">
     <div class="col-lg-3">
       <%= form_tag(companies_path, method: 'get', id: "search-form", class: "input-group") do %>
-        <%= text_field_tag :search, params[:search], class: "form-control",placeholder: "Search" %>
+          <div id="search-text-field">
+          <%= text_field_tag :search, params[:search], class: "form-control",placeholder: "Search", id: "searchfield" %>
+          </div>
         <span class="input-group-btn">
-          <%= submit_tag "Search", class: 'btn btn-primary', value: "search" %>
-          <%= submit_tag "Clear", class: 'btn btn-default', value: "clear" %>
+          <%= submit_tag "Search", class: 'btn btn-primary', value: "search", onclick: "search_button_click(this)" %>
+          <%= submit_tag "Clear", class: 'btn btn-default', value: "clear", onclick: "clear_search_bar(this)" %>
         </span>
 
         <% end %>
@@ -138,7 +140,6 @@ var map = AmCharts.makeChart( "mapdiv", {
       <% end %>
   </div> <!-- filters -->
 </div>
-
 
 <% if false %>
   <%= form_tag companies_path, method: "get", id: "filter", class: "filter" do %>
