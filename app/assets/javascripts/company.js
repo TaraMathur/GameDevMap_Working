@@ -24,9 +24,16 @@ function filter_on_type(select_tag){
 
 function clear_search_bar(select_tag){
 	document.getElementById('searchfield').value = ''
-	window.location.href="#company-table"
+//	window.location.href="#company-table"
 }
 
 function search_button_click(select_tag){
-	window.location.href="#company-table"
+//	window.location.href="#company-table"
+}
+
+function reset_filters(select_tag){
+	document.getElementById('cat_select').value = ''
+	document.getElementById('country_select').value = ''
+	document.getElementById('state_select').value = ''
+	document.getElementById('city_select').value = ''
 }
