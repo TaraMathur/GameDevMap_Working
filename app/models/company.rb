@@ -40,6 +40,7 @@ def self.column_search(search)
 	# Search by Company Name
  	byCompanyName = where("name LIKE ?", "%#{search}%")
 
+
  	# Search by City
 	byCityName = joins(:city).where("cities.name LIKE ?", "%#{search}%")
 	result = byCompanyName + byCityName
@@ -59,7 +60,7 @@ def self.column_search(search)
 		result = result + comps
 	end
 
-   	return result
+   	return result.uniq
 
  end
 

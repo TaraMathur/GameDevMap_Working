@@ -27,7 +27,8 @@ class CompaniesController < ApplicationController
 	end
 
 	def filter
-		# Map Click
+		# Need to enable filters to work together
+
 		if (params["clickedMapPoint"])
 			@companies = Company.filter_search("clickedMapPoint",params["clickedMapPoint"])
 			byebug
