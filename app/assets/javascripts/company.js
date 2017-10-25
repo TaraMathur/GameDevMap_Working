@@ -22,13 +22,28 @@ function filter_on_type(select_tag){
   })
  }
 
+ function getPosition(element){
+        var e = document.getElementById(element);
+        var left = 0;
+        var top = 0;
+
+        do{
+            left += e.offsetLeft;
+            top += e.offsetTop;
+        }while(e = e.offsetParent);
+
+        return [left, top];
+}
+
 function clear_search_bar(select_tag){
 	document.getElementById('searchfield').value = ''
-//	window.location.href="#company-table"
+
+	window.scrollTo(getPosition('company-table'));
 }
 
 function search_button_click(select_tag){
 //	window.location.href="#company-table"
+	window.scrollTo(getPosition('company-table'));
 }
 
 function reset_filters(select_tag){
