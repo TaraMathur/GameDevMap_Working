@@ -77,13 +77,4 @@ def self.column_search(search)
 	end
  end
 
- def self.find_comps_in_city(city_id)
-	comps = where(city_id: city_id)
-	return comps
- end
-
- def self.find_stateprovs(country_id)
- 	states = StateProv.where(country_id: country_id)
- 	return states
- 	end
 end

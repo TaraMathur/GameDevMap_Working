@@ -49,41 +49,6 @@ class CompaniesController < ApplicationController
 		@company = Company.find(params[:id])
 	end
 
-	def filter_on_map
-		# Searching via Map
-		if (params["clickedMapPoint"])
-			@companies = Company.filter_search("clickedMapPoint",params["clickedMapPoint"])
-		else
-			@companies = Company.all
-		end
-	end
-
-	def filter_on_selects
-		if (params["comp_type"] && params["comp_type"]!= "")
-			@companies = Company.comptype_search(params["comp_type"])
-		else
-			@companies = Company.all
-		end
-	end
-
-	def filter_on_country_select
-	 	# check if city or state is selected, if yes then call another find method
-	 	if (params["countrySelected"] && params["countrySelected"]!= "")
-	 		@companies = Company.find_comps_in_country(params["countrySelected"])
-	 	else
-	 		@companies = Company.all
-	 	end
-	end
-
- 	def filter_on_city_select
-	 	# check if city or state is selected, if yes then call another find method
-	 	if (params["citySelected"] && params["citySelected"]!= "")
-	 		@companies = Company.find_comps_in_city(params["citySelected"])
-	 	else
-	 		@companies = Company.all
-	 	end
-	end
-
   private
 
 	def set_company

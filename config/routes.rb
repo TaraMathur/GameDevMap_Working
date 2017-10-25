@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   resources :companies do
     collection do
-      get :filter_on_map
-      get :filter_on_selects
-      get :filter_on_country_select
-      get :filter_on_city_select
       get :filter
     end
   end
