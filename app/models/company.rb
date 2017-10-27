@@ -38,8 +38,8 @@ class Company < ApplicationRecord
       comps = where(city_id: city_ids)
       return comps
 
-    elsif (params["comp_type"] && params["comp_type"]!= "")
-      search_value = params["comp_type"]
+    elsif (params["categorySelected"] && params["categorySelected"]!= "")
+      search_value = params["categorySelected"]
       comptype_ids = Category.where(id: search_value)
       comps = where(category_id: comptype_ids)
       return comps

@@ -8,14 +8,14 @@ class CompaniesController < ApplicationController
     end
 
     # Needed for creating map points for amMap ---
-    @mappoints = MapPoint.all
-    @latLong = {}
-    @mapDatum = []
+    @mapPoints = MapPoint.all
+    @latLongs = {}
+    @mapData = []
     i = 0
 
-    @mappoints.each do |element|
-      @latLong[element.name] = {"latitude": element.latitude, "longitude": element.longitude}
-      @mapDatum[i] = {"code": element.name , "name": element.name, "value":32358260, "color":"#e74c3c"}
+    @mapPoints.each do |element|
+      @latLongs[element.name] = {"latitude": element.latitude, "longitude": element.longitude}
+      @mapData[i] = {"code": element.name , "name": element.name, "value":32358260, "color":"#e74c3c"}
       i = i + 1
     end
     # ---

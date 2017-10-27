@@ -14,9 +14,9 @@
 
 <script>
 
-var chartData = <%= convert_to_ammaps_json(@mappoints) %>;
-var mapData = <%= convert_to_ammaps_json(@mapDatum) %>
-var latlong = <%= convert_to_ammaps_json(@latLong) %>
+var chartData = <%= convert_to_ammaps_json(@mapPoints) %>;
+var mapData = <%= convert_to_ammaps_json(@mapData) %>
+var latLongs = <%= convert_to_ammaps_json(@latLongs) %>
 
 // get min and max values
 var minBulletSize = 3;
@@ -57,8 +57,8 @@ for ( var i = 0; i < mapData.length; i++ ) {
     "width": size,
     "height": size,
     "color": dataItem.color,
-    "longitude": latlong[ id ].longitude,
-    "latitude": latlong[ id ].latitude,
+    "longitude": latLongs[ id ].longitude,
+    "latitude": latLongs[ id ].latitude,
     "title": dataItem.name,
     "value": value,
     "zoomLevel": 2

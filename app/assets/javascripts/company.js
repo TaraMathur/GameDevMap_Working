@@ -15,10 +15,10 @@ function filter_on_city(select_tag){
  }
 
 function filter_on_category(select_tag){
-  comp_type = $(select_tag).val()
+  categorySelected = $(select_tag).val()
   $.ajax({
     url: "companies/filter",
-    data: {comp_type: comp_type}
+    data: {categorySelected: categorySelected}
   })
  }
 
