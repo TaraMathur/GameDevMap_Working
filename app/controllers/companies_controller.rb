@@ -1,44 +1,44 @@
 class CompaniesController < ApplicationController
-	def index
+  def index
 
-		if (params[:search] && params[:commit]!="clear")
-			@companies = Company.column_search(params[:search])
-		else
-			@companies = Company.all
-		end
+    if (params[:search] && params[:commit]!="clear")
+      @companies = Company.column_search(params[:search])
+    else
+      @companies = Company.all
+    end
 
-		# Needed for creating map points for amMap ---
-		@mappoints = MapPoint.all
-		@latLong = {}
-		@mapDatum = []
-		i = 0
+    # Needed for creating map points for amMap ---
+    @mappoints = MapPoint.all
+    @latLong = {}
+    @mapDatum = []
+    i = 0
 
-		@mappoints.each do |element|
-			@latLong[element.name] = {"latitude": element.latitude, "longitude": element.longitude}
-			@mapDatum[i] = {"code": element.name , "name": element.name, "value":32358260, "color":"#e74c3c"}
-			i = i + 1
-		end
-		# ---
-	end
+    @mappoints.each do |element|
+      @latLong[element.name] = {"latitude": element.latitude, "longitude": element.longitude}
+      @mapDatum[i] = {"code": element.name , "name": element.name, "value":32358260, "color":"#e74c3c"}
+      i = i + 1
+    end
+    # ---
+  end
 
-	def filter
-		# To do: enable filters to work together
-		@companies = Company.filter_search(params)
-	end
+  def filter
+    # To do: enable filters to work together
+    @companies = Company.filter_search(params)
+  end
 
-	def new
-	    @company = Company.new
-  	end
+  def new
+      @company = Company.new
+    end
 
-  	def create
-    	@company = Company.new(company_params)
-      	
-      	if @company.save
-        	redirect_to @company, notice: 'Company was successfully created.'
-    	else
-        	render :new
-    	end
-  	end
+    def create
+      @company = Company.new(company_params)
+        
+        if @company.save
+          redirect_to @company, notice: 'Company was successfully created.'
+      else
+          render :new
+      end
+    end
 
   private
 

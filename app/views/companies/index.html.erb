@@ -1,11 +1,11 @@
 
 <!-- Header -->
 <header>
-	<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-	<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-	<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-	<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+  <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+  <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+  <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+  <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+  <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </header>
@@ -15,18 +15,16 @@
 <script>
 
 var chartData = <%= convert_to_ammaps_json(@mappoints) %>;
-
-var mapData2 = <%= convert_to_ammaps_json(@mapDatum) %>
-
-var latlong2 = <%= convert_to_ammaps_json(@latLong) %>
+var mapData = <%= convert_to_ammaps_json(@mapDatum) %>
+var latlong = <%= convert_to_ammaps_json(@latLong) %>
 
 // get min and max values
 var minBulletSize = 3;
 var maxBulletSize = 70;
 var min = Infinity;
 var max = -Infinity;
-for ( var i = 0; i < mapData2.length; i++ ) {
-  var value = mapData2[ i ].value;
+for ( var i = 0; i < mapData.length; i++ ) {
+  var value = mapData[ i ].value;
   if ( value < min ) {
     min = value;
   }
@@ -41,8 +39,8 @@ var minSquare = minBulletSize * minBulletSize * 2 * Math.PI;
 
 // create circle for each country
 var images = [];
-for ( var i = 0; i < mapData2.length; i++ ) {
-  var dataItem = mapData2[ i ];
+for ( var i = 0; i < mapData.length; i++ ) {
+  var dataItem = mapData[ i ];
   var value = dataItem.value;
   // calculate size of a bubble
   var square = ( value - min ) / ( max - min ) * ( maxSquare - minSquare ) + minSquare;
@@ -59,8 +57,8 @@ for ( var i = 0; i < mapData2.length; i++ ) {
     "width": size,
     "height": size,
     "color": dataItem.color,
-    "longitude": latlong2[ id ].longitude,
-    "latitude": latlong2[ id ].latitude,
+    "longitude": latlong[ id ].longitude,
+    "latitude": latlong[ id ].latitude,
     "title": dataItem.name,
     "value": value,
     "zoomLevel": 2
@@ -128,7 +126,7 @@ var map = AmCharts.makeChart( "mapdiv", {
 <br>
   <div id="filters">
       <%= form_tag(companies_path, method: 'get', id: "filters") do %>
-        <%= select_tag :category_id, content_tag(:option,'All Company Types',:value=>"")+options_from_collection_for_select(Category.all, :id, :name), onchange: "filter_on_type(this)", id: "cat_select" %>
+        <%= select_tag :category_id, content_tag(:option,'All Company Types',:value=>"")+options_from_collection_for_select(Category.all, :id, :name), onchange: "filter_on_category(this)", id: "cat_select" %>
 
         <%= select_tag :country_id, content_tag(:option,'All Countries',:value=>"")+options_from_collection_for_select(Country.all, :id, :name), onchange: "filter_on_country(this)", id: "country_select" %>
         
@@ -140,12 +138,5 @@ var map = AmCharts.makeChart( "mapdiv", {
       <% end %>
   </div> <!-- filters -->
 </div>
-
-<% if false %>
-  <%= form_tag companies_path, method: "get", id: "filter", class: "filter" do %>
-    <%= label_tag "Category" %>
-    <%= select "company", "country", options_for_select([["United States","United States"],["United Kingdom","United Kingdom"]]), {prompt: 'All'}, onchange: "$('#filter').submit();" %>
-  <% end %>
-<% end %>
 
 <%=render 'companies/company_table' %>
