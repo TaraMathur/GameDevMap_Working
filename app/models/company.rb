@@ -2,6 +2,9 @@ class Company < ApplicationRecord
 	# To do: validate for uniqueness
 	validates :name, presence: true
 	validates :url, presence: true
+	validates :city_id, presence: true
+	validates :category_id, presence: true
+	validates :listing_status, presence: true
 
 	belongs_to :category
 	belongs_to :city
@@ -9,7 +12,6 @@ class Company < ApplicationRecord
 	def self.column_search(search)
 
 	 	byCompanyName = where("name LIKE ?", "%#{search}%")
-
 
 		byCityName = joins(:city).where("cities.name LIKE ?", "%#{search}%")
 

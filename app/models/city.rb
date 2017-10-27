@@ -5,12 +5,4 @@ class City < ApplicationRecord
 	belongs_to :region
 	belongs_to :map_point
 	
-	def get_stateprov
-		return StateProv.find(self.state_prov_id)
-	end
-
-	def get_stateprov_name
-		stateprov = get_stateprov
-		return stateprov.name
-	end
 end
