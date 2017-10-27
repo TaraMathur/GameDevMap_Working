@@ -1,6 +1,4 @@
 class CompaniesController < ApplicationController
-	before_action :set_company, only: [:edit, :update, :destroy]
-
 	def index
 
 		if (params[:search] && params[:commit]!="clear")
@@ -44,23 +42,8 @@ class CompaniesController < ApplicationController
 
   private
 
-	def set_company
-		@company = Company.find(params[:id])
-	end
-
     def company_params
       params.require(:company).permit(:name, :url, :city_id, :category_id, :listing_status)
     end
 
-    def sortable_columns
-    	["name"]
-    end
-
-    def sort_column
-    	sortable_columns.include?(params[:column]) ? params[:column] : "name"
-  	end
-
-  	def sort_direction
-    	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  	end
 end
