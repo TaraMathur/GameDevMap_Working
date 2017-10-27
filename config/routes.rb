@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'companies#index'
 
-  resources :companies do
+  resources :companies, except: :show do
     collection do
       get :filter
     end

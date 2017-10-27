@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-	before_action :set_company, only: [:show, :edit, :update, :destroy]
+	before_action :set_company, only: [:edit, :update, :destroy]
 
 	def index
 
@@ -21,14 +21,11 @@ class CompaniesController < ApplicationController
 			i = i + 1
 		end
 		# ---
-
 	end
 
 	def filter
 		# To do: enable filters to work together
-
 		@companies = Company.filter_search(params)
-
 	end
 
 	def new
@@ -44,10 +41,6 @@ class CompaniesController < ApplicationController
         	render :new
     	end
   	end
-
-	def show
-		@company = Company.find(params[:id])
-	end
 
   private
 

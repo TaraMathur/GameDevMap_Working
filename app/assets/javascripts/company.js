@@ -38,11 +38,13 @@ function filter_on_type(select_tag){
 function clear_search_bar(select_tag){
 	document.getElementById('searchfield').value = ''
 
+	// To-do : set the focus to the Company Table after search
 	window.scrollTo(getPosition('company-table'));
 }
 
 function search_button_click(select_tag){
-//	window.location.href="#company-table"
+	// To-do: set the focus to the Company Table after search
+	//	window.location.href="#company-table"
 	window.scrollTo(getPosition('company-table'));
 }
 

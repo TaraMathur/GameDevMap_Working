@@ -97,7 +97,7 @@ var map = AmCharts.makeChart( "mapdiv", {
     "event": "clickMapObject",
     "method": function(event) {
       clickedMapPoint = event.mapObject.title;
-      $.get("/companies/filter_on_map",{clickedMapPoint, clickedMapPoint});
+      $.get("/companies/filter",{clickedMapPoint, clickedMapPoint});
     }
   }]
 } );

@@ -17,15 +17,17 @@
 		<th>City</th>
 		<th>State/Province</th>
 		<th>Country</th>
+		<th>Test</th>
 	</tr>
 
 	<% @companies.each do |company| %>
 	<tr>
 		<td><%=link_to company.name, "http://" + company.url %></td>
-    <td><%= Category.find_by(id: company.category_id).name %></td>
+		<td><%= company.category.name %></td>
 		<td><%= company.city.name %></td>
 		<td><%= company.city.state_prov.name %></td>
 		<td><%= company.city.state_prov.country.name %></td>
+		<td><%= company.category.name %></td>
 	</tr>
 	<% end %>
 </table>
