@@ -4,7 +4,7 @@ class Company < ApplicationRecord
   validates :url, presence: true
   validates :city_id, presence: true
   validates :category_id, presence: true
-  validates :listing_status, presence: true
+  validates :listing_status_id, presence: true
 
   belongs_to :category
   belongs_to :city
