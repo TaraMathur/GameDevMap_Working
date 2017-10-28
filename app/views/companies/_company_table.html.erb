@@ -17,7 +17,6 @@
     <th>City</th>
     <th>State/Province</th>
     <th>Country</th>
-    <th>Test</th>
   </tr>
 
   <% @companies.each do |company| %>
@@ -27,7 +26,6 @@
     <td><%= company.city.name %></td>
     <td><%= company.city.state_prov.name %></td>
     <td><%= company.city.state_prov.country.name %></td>
-    <td><%= company.category.name %></td>
   </tr>
   <% end %>
 </table>
