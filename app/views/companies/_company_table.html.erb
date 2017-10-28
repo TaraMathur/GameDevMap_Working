@@ -1,32 +1,32 @@
 <div id=company-table>
 
-<% if false %>
-<% if @companies.blank? %>
-  <h5> No companies matching.</h5>
-<% elsif @companies.size == 1 %>
-  <h5><%= @companies.size %> company:</h5>
-<% else %>
-  <h5><%= @companies.size %> companies:</h5>
-<% end %>
-<% end %>
-
-<table class="table table-bordered table-striped table-condensed">
-  <tr>
-    <th>Company</th>
-    <th>Type</th>
-    <th>City</th>
-    <th>State/Province</th>
-    <th>Country</th>
-  </tr>
-
-  <% @companies.each do |company| %>
-  <tr>
-    <td><%=link_to company.name, "http://" + company.url %></td>
-    <td><%= company.category.name %></td>
-    <td><%= company.city.name %></td>
-    <td><%= company.city.state_prov.name %></td>
-    <td><%= company.city.state_prov.country.name %></td>
-  </tr>
+  <% if false %>
+    <% if @companies.blank? %>
+      <h5> No companies matching.</h5>
+    <% elsif @companies.size == 1 %>
+      <h5><%= @companies.size %> company:</h5>
+    <% else %>
+      <h5><%= @companies.size %> companies:</h5>
+    <% end %>
   <% end %>
-</table>
+
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Company</th>
+      <th>Type</th>
+      <th>City</th>
+      <th>State/Province</th>
+      <th>Country</th>
+    </tr>
+
+    <% @companies.each do |company| %>
+    <tr>
+      <td><%=link_to company.name, "http://" + company.url %></td>
+      <td><%= company.category.name %></td>
+      <td><%= company.city.name %></td>
+      <td><%= company.city.state_prov.name %></td>
+      <td><%= company.city.state_prov.country.name %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

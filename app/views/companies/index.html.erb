@@ -14,91 +14,91 @@
 
 <script>
 
-var chartData = <%= convert_to_ammaps_json(@mapPoints) %>;
-var mapData = <%= convert_to_ammaps_json(@mapData) %>
-var latLongs = <%= convert_to_ammaps_json(@latLongs) %>
+  var chartData = <%= convert_to_ammaps_json(@mapPoints) %>;
+  var mapData = <%= convert_to_ammaps_json(@mapData) %>
+  var latLongs = <%= convert_to_ammaps_json(@latLongs) %>
 
-// get min and max values
-var minBulletSize = 3;
-var maxBulletSize = 70;
-var min = Infinity;
-var max = -Infinity;
-for ( var i = 0; i < mapData.length; i++ ) {
-  var value = mapData[ i ].value;
-  if ( value < min ) {
-    min = value;
-  }
-  if ( value > max ) {
-    max = value;
-  }
-}
-
-// it's better to use circle square to show difference between values, not a radius
-var maxSquare = maxBulletSize * maxBulletSize * 2 * Math.PI;
-var minSquare = minBulletSize * minBulletSize * 2 * Math.PI;
-
-// create circle for each country
-var images = [];
-for ( var i = 0; i < mapData.length; i++ ) {
-  var dataItem = mapData[ i ];
-  var value = dataItem.value;
-  // calculate size of a bubble
-  var square = ( value - min ) / ( max - min ) * ( maxSquare - minSquare ) + minSquare;
-  if ( square < minSquare ) {
-    square = minSquare;
-  }
-  var size = 5; //Math.sqrt( square / ( Math.PI * 2 ) );
-  var id = dataItem.code;
-
-  images.push( {
-    "type": "circle",
-    "theme": "light",
-
-    "width": size,
-    "height": size,
-    "color": dataItem.color,
-    "longitude": latLongs[ id ].longitude,
-    "latitude": latLongs[ id ].latitude,
-    "title": dataItem.name,
-    "value": value,
-    "zoomLevel": 2
-  } );
-}
-
-// build map
-var map = AmCharts.makeChart( "mapdiv", {
-  "type": "map",
-  "projection": "eckert6",
-  "titles": [ {
-    "text": "",
-    "size": 14
-  }, {
-    "text": "",
-    "size": 11
-  } ],
-  "areasSettings": {
-    "color": "#3CAFF2",
-    "unlistedAreasColor": "#3CAFF2",
-    "unlistedAreasAlpha": 0.1
-  },
-  "dataProvider": {
-    "map": "worldLow",
-    "images": images,
-     "getAreasFromMap": false
-  },
-    "areasSettings": {
-    "autoZoom": false,
-    "selectedColor": "#3CAFF2",
-    "selectable": true
-  }, 
-  "listeners": [{
-    "event": "clickMapObject",
-    "method": function(event) {
-      clickedMapPoint = event.mapObject.title;
-      $.get("/companies/filter",{clickedMapPoint, clickedMapPoint});
+  // get min and max values
+  var minBulletSize = 3;
+  var maxBulletSize = 70;
+  var min = Infinity;
+  var max = -Infinity;
+  for ( var i = 0; i < mapData.length; i++ ) {
+    var value = mapData[ i ].value;
+    if ( value < min ) {
+      min = value;
     }
-  }]
-} );
+    if ( value > max ) {
+      max = value;
+    }
+  }
+
+  // it's better to use circle square to show difference between values, not a radius
+  var maxSquare = maxBulletSize * maxBulletSize * 2 * Math.PI;
+  var minSquare = minBulletSize * minBulletSize * 2 * Math.PI;
+
+  // create circle for each country
+  var images = [];
+  for ( var i = 0; i < mapData.length; i++ ) {
+    var dataItem = mapData[ i ];
+    var value = dataItem.value;
+    // calculate size of a bubble
+    var square = ( value - min ) / ( max - min ) * ( maxSquare - minSquare ) + minSquare;
+    if ( square < minSquare ) {
+      square = minSquare;
+    }
+    var size = 5; //Math.sqrt( square / ( Math.PI * 2 ) );
+    var id = dataItem.code;
+
+    images.push( {
+      "type": "circle",
+      "theme": "light",
+
+      "width": size,
+      "height": size,
+      "color": dataItem.color,
+      "longitude": latLongs[ id ].longitude,
+      "latitude": latLongs[ id ].latitude,
+      "title": dataItem.name,
+      "value": value,
+      "zoomLevel": 2
+    } );
+  }
+
+  // build map
+  var map = AmCharts.makeChart( "mapdiv", {
+    "type": "map",
+    "projection": "eckert6",
+    "titles": [ {
+      "text": "",
+      "size": 14
+    }, {
+      "text": "",
+      "size": 11
+    } ],
+    "areasSettings": {
+      "color": "#3CAFF2",
+      "unlistedAreasColor": "#3CAFF2",
+      "unlistedAreasAlpha": 0.1
+    },
+    "dataProvider": {
+      "map": "worldLow",
+      "images": images,
+       "getAreasFromMap": false
+    },
+      "areasSettings": {
+      "autoZoom": false,
+      "selectedColor": "#3CAFF2",
+      "selectable": true
+    }, 
+    "listeners": [{
+      "event": "clickMapObject",
+      "method": function(event) {
+        clickedMapPoint = event.mapObject.title;
+        $.get("/companies/filter",{clickedMapPoint, clickedMapPoint});
+      }
+    }]
+  } );
 </script>
       
 <!-- HTML   -->

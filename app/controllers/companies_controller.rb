@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
     end
 
     # Needed for creating map points for amMap ---
-    @mapPoints = MapPoint.all
+    @mapPoints = MapPoint.all  # To do: change this to only include map points that have companies
     @latLongs = {}
     @mapData = []
     i = 0
@@ -28,22 +28,22 @@ class CompaniesController < ApplicationController
 
   def new
       @company = Company.new
-    end
+  end
 
-    def create
-      @company = Company.new(company_params)
+  def create
+    @company = Company.new(company_params)
         
-        if @company.save
-          redirect_to @company, notice: 'Company was successfully created.'
-      else
-          render :new
-      end
+    if @company.save
+      redirect_to @company, notice: 'Company was successfully created.'
+    else
+      render :new
     end
+  end
 
   private
 
-    def company_params
-      params.require(:company).permit(:name, :url, :city_id, :category_id, :listing_status)
-    end
+  def company_params
+    params.require(:company).permit(:name, :url, :city_id, :category_id, :listing_status)
+  end
 
 end

@@ -24,11 +24,11 @@ class Company < ApplicationRecord
     
     result = byCompanyName + byCityName + byStateProvName + byCountryName
 
-      return result.uniq
+    return result.uniq
 
-   end
+  end
 
-   def self.filter_search(params)
+  def self.filter_search(params)
 
     if (params["clickedMapPoint"])
       search_value = params["clickedMapPoint"]
@@ -52,6 +52,6 @@ class Company < ApplicationRecord
       return comps
     end
 
-   end
+  end
 
 end
