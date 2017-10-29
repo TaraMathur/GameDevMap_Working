@@ -1,9 +1,9 @@
 class Company < ApplicationRecord 
-  # To do: validate for uniqueness
   validates :name, presence: true
   validates :url, presence: true
   validates :city_id, presence: true
   validates :category_id, presence: true
+  validates_uniqueness_of :name, scopes: [:city]
 
   belongs_to :category
   belongs_to :city
