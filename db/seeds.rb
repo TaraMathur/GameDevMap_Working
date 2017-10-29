@@ -17,8 +17,8 @@ cat7 = Category.create(name: "Serious Games")
 cat8 = Category.create(name: "Developer and Publisher")
 
 # Load listing statues
-status1 = ListingStatus.create(status:"Deleted")
-status2 = ListingStatus.create(status:"Submitted")
+status1 = ListingStatus.create(status:"Submitted")
+status2 = ListingStatus.create(status:"Deleted")
 status3 = ListingStatus.create(status:"Approved")
 status4 = ListingStatus.create(status:"Denied")
 
@@ -266,7 +266,7 @@ AuvergneRhoneAlpes_state = StateProv.create(name:"AuvergneRhoneAlpes", country_i
 BourgogneFrancheComte_state = StateProv.create(name:"BourgogneFrancheComte", country_id: France.id)
 Bretagne_state = StateProv.create(name:"Bretagne", country_id: France.id)
 CentreValdeLoire_state = StateProv.create(name:"CentreVal de Loire", country_id: France.id)
-IledeFrance_state = StateProv.create(name:"IledeFrance", country_id: France.id)
+IledeFrance_state = StateProv.create(name:"Ile-de-France", country_id: France.id)
 LanguedocRoussillonMidiPyrenees_state = StateProv.create(name:"LanguedocRoussillonMidiPyrenees", country_id: France.id)
 NewCaledonia_state = StateProv.create(name:"New Caledonia", country_id: France.id)
 NordPasdeCalaisPicardie_state = StateProv.create(name:"NordPasdeCalaisPicardie", country_id: France.id)

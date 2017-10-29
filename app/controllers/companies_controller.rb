@@ -31,8 +31,10 @@ class CompaniesController < ApplicationController
   end
 
   def create
+    # To do: add a default listing_status here
+
     @company = Company.new(company_params)
-        
+    
     if @company.save
       redirect_to @company, notice: 'Company was successfully created.'
     else
@@ -40,10 +42,14 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def show
+    @company = Company.find(params[:id])
+  end
+
   private
 
   def company_params
-    params.require(:company).permit(:name, :url, :city_id, :category_id, :listing_status)
+    params.require(:company).permit(:name, :url, :city_id, :category_id, :listing_status_id)
   end
 
 end

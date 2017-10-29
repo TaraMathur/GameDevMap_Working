@@ -1,0 +1,27 @@
+<!-- This view is displayed when a new company is submitted -->
+
+<h3>Submitted:</h3>
+
+<p>
+<strong>Name:</strong>
+<%= @company.name %>
+</p>
+
+<p>
+<strong>Homepage:</strong>
+<%= @company.url %>
+</p>
+
+<p>
+<strong>City:</strong>
+<%= @company.city.name %>
+</p>
+
+<p>
+<strong>Category:</strong>
+<%= @company.category.name %>
+</p>
+
+<h3>Thank you!</h3>
+
+<p><%= link_to 'Back to Company List',companies_path %></p>

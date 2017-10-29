@@ -4,10 +4,17 @@ class Company < ApplicationRecord
   validates :url, presence: true
   validates :city_id, presence: true
   validates :category_id, presence: true
-  validates :listing_status_id, presence: true
 
   belongs_to :category
   belongs_to :city
+
+  before_save :set_defaults, unless: :persisted?
+
+  def set_defaults
+    if !self.listing_status_id
+      self.listing_status_id = ListingStatus.find_by(status: "Submitted").id
+    end
+  end
 
   def self.column_search(search)
 

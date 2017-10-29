@@ -32,10 +32,13 @@
       <%= form.collection_select(:category_id, Category.all, :id, :name) %>
     </div>
 
+    <!-- When I implement admin access, this will be accessible only by admins -->
+    <% if false %>
     <div class="form-group">
       <%= form.label "Status" %>
-      <%= form.collection_select(:listing_status_id, ListingStatus.all, :id, :status, {selected: "Submitted"}) %>
+      <%= form.collection_select(:listing_status_id, ListingStatus.all, :id, :status, {:selected => :"Submitted"}) %>
     </div>
+    <% end %>
 
     <div class="actions">
       <%= form.submit "Submit", class: "btn btn-primary" %>
