@@ -7,6 +7,7 @@ class Company < ApplicationRecord
 
   belongs_to :category
   belongs_to :city
+  belongs_to :listing_status
 
   before_save :set_defaults, unless: :persisted?
 
@@ -36,6 +37,8 @@ class Company < ApplicationRecord
   end
 
   def self.filter_search(params)
+
+    # To-do: Check which filters are already set
 
     if (params["clickedMapPoint"])
       search_value = params["clickedMapPoint"]
